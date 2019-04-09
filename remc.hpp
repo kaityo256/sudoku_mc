@@ -8,7 +8,7 @@
 
 class REMC {
 private:
-  std::vector<MC *> _mcs;
+  std::vector<MC> _mcs;
   std::vector<double> _beta;
   std::vector<int> _bindex;
   double _min_energy;
@@ -24,21 +24,13 @@ public:
     _min_energy = 0.0;
     _step = 0;
   }
-  ~REMC(void) {
-    for (auto &m : _mcs) {
-      delete m;
-    }
-  }
-  std::string make_filledgrid(void);
-  void seed(int s) {
-    mt.seed(s);
-  }
+
   void reset(const std::string &ans) {
     for (auto &m : _mcs) {
-      m->reset(ans);
+      m.reset(ans);
     }
   }
-  void add(MC *m, double b) {
+  void add(MC &m, double b) {
     _mcs.push_back(m);
     _bindex.push_back(_beta.size());
     _beta.push_back(b);
