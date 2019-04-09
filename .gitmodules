@@ -1,0 +1,3 @@
+[submodule "mpistream"]
+	path = mpistream
+	url = git@github.com:kaityo256/mpistream.git
