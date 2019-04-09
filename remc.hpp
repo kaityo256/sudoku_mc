@@ -1,9 +1,9 @@
 #pragma once
 
 #include "mc.hpp"
-#include "sgrid.hpp"
+#include "smr/rater.hpp"
+#include "sudoku_lib/grid.hpp"
 #include <random>
-#include <rater.hpp>
 #include <vector>
 
 class REMC {
@@ -17,7 +17,6 @@ private:
   int _step;
   std::mt19937 mt;
   std::uniform_real_distribution<double> ud;
-  bool search_filledgrid(SGrid &g2, const int index, std::string &ans);
 
 public:
   REMC(void)
@@ -34,7 +33,11 @@ public:
   void seed(int s) {
     mt.seed(s);
   }
-  void reset(const std::string &ans);
+  void reset(const std::string &ans) {
+    for (auto &m : _mcs) {
+      m->reset(ans);
+    }
+  }
   void add(MC *m, double b) {
     _mcs.push_back(m);
     _bindex.push_back(_beta.size());

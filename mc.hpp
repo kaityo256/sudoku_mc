@@ -1,5 +1,5 @@
 #pragma once
-#include "mbit.hpp"
+#include "sudoku_lib/mbit.hpp"
 #include <random>
 class MC {
 protected:
@@ -19,7 +19,7 @@ protected:
 public:
   MC(const std::string &a)
       : answer(a), mt(1) {
-    _data = mbit81mask;
+    _data = mask81;
     energy = 0.0;
   }
 
@@ -47,13 +47,11 @@ public:
   double current_energy(void) {
     return energy;
   }
-  void seed(int s) {
-    mt.seed(s);
-  }
+
   const std::string current_data(void) {
     return mbit2str(_data, answer);
   }
-  mbit random_remove(const mbit &s);
-  mbit random_add(const mbit &s);
-  virtual void onestep(const double beta) = 0;
+  void onestep(const double beta) {
+    mbit ns = random_remove(_data);
+  }
 };

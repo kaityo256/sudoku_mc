@@ -3,47 +3,6 @@
 #include "rater.hpp"
 #include <assert.h>
 
-REMC::REMC(void)
-    : ud(0.0, 1.0) {
-  _min_energy = 0.0;
-  _step = 0;
-}
-
-REMC::~REMC(void) {
-  for (auto &m : _mcs) {
-    delete m;
-  }
-}
-
-bool REMC::search_filledgrid(SGrid &g2, const int index, std::string &ans) {
-  if (index == 81) {
-    ans = g2.data;
-    return true;
-  }
-  int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-  std::shuffle(a, a + 9, mt);
-  for (unsigned int i = 0; i < 9; i++) {
-    SGrid g(g2.data);
-    if (!g.can_put(index, a[i])) continue;
-    g.put(index, a[i]);
-    if (search_filledgrid(g, index + 1, ans)) return true;
-  }
-  return false;
-}
-
-std::string REMC::make_filledgrid(void) {
-  SGrid g;
-  std::string ans;
-  search_filledgrid(g, 0, ans);
-  return ans;
-}
-
-void REMC::reset(const std::string &ans) {
-  for (auto &m : _mcs) {
-    m->reset(ans);
-  }
-}
-
 void REMC::swap_replica(const int j1, const int j2) {
   const int i1 = _bindex[j1];
   const int i2 = _bindex[j2];
@@ -85,4 +44,3 @@ void REMC::onestep(void) {
   }
   swap_beta();
 }
-
