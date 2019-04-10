@@ -11,12 +11,13 @@ int main(int argc, char **argv) {
   MPI_Comm_size(MPI_COMM_WORLD, &procs);
   mout.init(rank, procs);
   std::vector<MC> v;
-  AnsMaker am;
+  const int seed = rank;
+  AnsMaker am(seed);
   REMC remc;
   double beta = 0.01;
   for (int i = 0; i < 10; i++) {
     std::string answer = am.make();
-    MC m(answer);
+    MC m(answer, seed);
     remc.add(m, beta);
     beta *= 2.0;
   }

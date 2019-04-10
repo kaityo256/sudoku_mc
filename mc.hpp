@@ -31,8 +31,8 @@ private:
   }
 
 public:
-  MC(const std::string &a)
-      : answer(a), mt(1) {
+  MC(const std::string &a, const int seed = 1)
+      : answer(a), mt(seed) {
     _data = mask81;
     energy = 0.0;
     for (int i = 0; i < 10000; i++) {
@@ -79,6 +79,7 @@ public:
     }
     ns = random_add(_data);
     double n_energy = calc_energy(ns);
+
     if (myrand_real() < exp(beta * (n_energy - energy))) {
       _data = ns;
       energy = calc_energy(_data);
