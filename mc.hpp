@@ -1,11 +1,15 @@
 #pragma once
+#include "smr/rater.hpp"
+#include "sudoku_lib/grid.hpp"
 #include "sudoku_lib/mbit.hpp"
 #include <random>
+
+__attribute__((weak)) Rater rater(100000);
+
 class MC {
-protected:
+private:
   std::string answer;
   mbit _data;
-  void dig(void);
   double energy;
   std::mt19937 mt;
   std::uniform_real_distribution<double> ud;
@@ -16,11 +20,28 @@ protected:
     return ud(mt);
   }
 
+  bool is_unique(mbit m) {
+    std::string str = mbit2str(m, answer);
+    return Grid::is_unique(str);
+  }
+
+  double calc_energy(mbit m) {
+    std::string str = mbit2str(m, answer);
+    return static_cast<double>(rater.rate(str.c_str()));
+  }
+
 public:
   MC(const std::string &a)
       : answer(a), mt(1) {
     _data = mask81;
     energy = 0.0;
+    for (int i = 0; i < 10000; i++) {
+      mbit ns = random_remove(_data);
+      if (is_unique(ns)) {
+        _data = ns;
+      }
+    }
+    energy = calc_energy(_data);
   }
 
   mbit random_remove(const mbit &s) {
@@ -31,6 +52,7 @@ public:
     }
     return (s ^ (t & -t));
   }
+
   mbit random_add(const mbit &s) {
     static const mbit mask = (mbit(1) << 81) - 1;
     mbit t = (~s) & mask;
@@ -40,10 +62,7 @@ public:
     }
     return (s | (t & -t));
   }
-  void reset(const std::string &a) {
-    answer = a;
-    energy = 0.0;
-  }
+
   double current_energy(void) {
     return energy;
   }
@@ -51,7 +70,18 @@ public:
   const std::string current_data(void) {
     return mbit2str(_data, answer);
   }
+
   void onestep(const double beta) {
     mbit ns = random_remove(_data);
+    if (is_unique(ns)) {
+      _data = ns;
+      energy = calc_energy(_data);
+    }
+    ns = random_add(_data);
+    double n_energy = calc_energy(ns);
+    if (myrand_real() < exp(beta * (n_energy - energy))) {
+      _data = ns;
+      energy = calc_energy(_data);
+    }
   }
 };

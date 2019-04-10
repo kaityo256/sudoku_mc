@@ -1,5 +1,6 @@
 all: a.out
 SRC=main.cpp
+SRC+=remc.cpp
 SRC+=sudoku_lib/grid.cpp
 SRC+=smr/fastgrid.cpp
 SRC+=smr/solvergrid.cpp
@@ -29,4 +30,4 @@ dep:
 clean:
 	rm -f a.out $(OBJ)
 
--include makefile.dep
+-include makefile.depend
