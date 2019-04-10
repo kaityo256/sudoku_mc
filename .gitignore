@@ -1,3 +1,5 @@
 .vscode
 *.o
 a.out
+makefile.depend
+r*.out
