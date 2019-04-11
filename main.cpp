@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
     remc.add(m, beta);
     beta *= 2.0;
   }
-  for (int i = 0; i < 10000; i++) {
+while(true){
     remc.onestep();
   }
   MPI_Finalize();
