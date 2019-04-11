@@ -1,0 +1,95 @@
+mpijob CMD    : mpirun -f /tmp/mpiexec.params.k011700.13916
+mpijob PARAMS : -d /home/k0117/k011700/github/sudoku_mc/190410 r7i4n0 24, r7i4n1 24,
+        r7i4n2 24, r7i4n3 24, r7i4n4 24, r7i4n5 24, r7i4n6 24, r7i4n7 24,
+        r7i4n8 24, r7i4n9 24, r7i4n10 24, r7i4n11 24, r7i4n12 24, r7i4n13 24,
+        r7i4n14 24, r7i4n15 24, r7i4n16 24, r7i4n17 24, r7i4n18 24, r7i4n19
+        24, r7i4n20 24, r7i4n21 24, r7i4n22 24, r7i4n23 24, r7i4n24 24,
+        r7i4n25 24, r7i4n26 24, r7i4n27 24, r7i4n28 24, r7i4n29 24, r7i4n30
+        24, r7i4n31 24, r7i4n32 24, r7i4n33 24, r7i4n34 24, r7i4n35 24,
+        r7i5n0 24, r7i5n1 24, r7i5n2 24, r7i5n3 24, r7i5n4 24, r7i5n5 24,
+        r7i5n6 24, r7i5n7 24, r7i5n8 24, r7i5n9 24, r7i5n10 24, r7i5n11 24,
+        r7i5n12 24, r7i5n13 24, r7i5n14 24, r7i5n15 24, r7i5n16 24, r7i5n17
+        24, r7i5n18 24, r7i5n19 24, r7i5n20 24, r7i5n21 24, r7i5n22 24,
+        r7i5n23 24, r7i5n24 24, r7i5n25 24, r7i5n26 24, r7i5n27 24, r7i5n28
+        24, r7i5n29 24, r7i5n30 24, r7i5n31 24, r7i5n32 24, r7i5n33 24,
+        r7i5n34 24, r7i5n35 24 omplace -nt 1 "./a.out"
+
+SGI MPT Placement option
+--------------------------
+omplace -nt 1
+
+Node   MPI
+------------
+r7i4n0 24
+r7i4n1 24
+r7i4n2 24
+r7i4n3 24
+r7i4n4 24
+r7i4n5 24
+r7i4n6 24
+r7i4n7 24
+r7i4n8 24
+r7i4n9 24
+r7i4n10 24
+r7i4n11 24
+r7i4n12 24
+r7i4n13 24
+r7i4n14 24
+r7i4n15 24
+r7i4n16 24
+r7i4n17 24
+r7i4n18 24
+r7i4n19 24
+r7i4n20 24
+r7i4n21 24
+r7i4n22 24
+r7i4n23 24
+r7i4n24 24
+r7i4n25 24
+r7i4n26 24
+r7i4n27 24
+r7i4n28 24
+r7i4n29 24
+r7i4n30 24
+r7i4n31 24
+r7i4n32 24
+r7i4n33 24
+r7i4n34 24
+r7i4n35 24
+r7i5n0 24
+r7i5n1 24
+r7i5n2 24
+r7i5n3 24
+r7i5n4 24
+r7i5n5 24
+r7i5n6 24
+r7i5n7 24
+r7i5n8 24
+r7i5n9 24
+r7i5n10 24
+r7i5n11 24
+r7i5n12 24
+r7i5n13 24
+r7i5n14 24
+r7i5n15 24
+r7i5n16 24
+r7i5n17 24
+r7i5n18 24
+r7i5n19 24
+r7i5n20 24
+r7i5n21 24
+r7i5n22 24
+r7i5n23 24
+r7i5n24 24
+r7i5n25 24
+r7i5n26 24
+r7i5n27 24
+r7i5n28 24
+r7i5n29 24
+r7i5n30 24
+r7i5n31 24
+r7i5n32 24
+r7i5n33 24
+r7i5n34 24
+r7i5n35 24
+
